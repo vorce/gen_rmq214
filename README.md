@@ -7,7 +7,8 @@ Instructions:
 ```bash
 docker-compose up -d
 MIX_ENV=test iex -S mix
-iex(1)> ExamplePublisher.start_link()
-iex(2)> ExampleConsumer.start_link()
 iex(3)> ExamplePublisher.test()
 ```
+
+This will start the example consumer, producer, and then publish
+25 messages.

@@ -23,11 +23,14 @@ defmodule ExamplePublisher do
   end
 
   def test(max \\ 25) do
+    {:ok, _} = ExampleConsumer.start_link()
+    {:ok, _} = start_link()
+
     0..max
     |> Enum.each(fn e ->
       IO.puts("pub: #{e}")
 
-      publish_message("{\"count\": #{e}}", "routing_key.#")
+      publish_message("{\"count\": #{e}}", "routing_key.foo")
       |> IO.inspect(label: "publish result")
     end)
   end
